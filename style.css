@@ -281,7 +281,12 @@ canvas {
   text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
   animation: glowText 4s ease-in-out infinite alternate;
+
+  margin: 0; /* remove default margin */
+  text-align: center; /* center the text itself */
+  z-index: 2; /* keep it above other elements if needed */
 }
+
 
 /* ✨ Glow Animation */
 @keyframes glowText {
@@ -313,6 +318,7 @@ canvas {
   color: #fff;
   text-shadow: 0 0 10px #ff66cc;
 }
+
 
 
 
