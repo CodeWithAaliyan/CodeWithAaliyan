@@ -274,7 +274,6 @@ canvas {
   font-size: 1.7rem;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-right: 1100px;
   color: transparent;
   background: linear-gradient(90deg, #ffb347, #ffcc33, #ff66cc, #66ffff);
   background-clip: text;
@@ -314,6 +313,7 @@ canvas {
   color: #fff;
   text-shadow: 0 0 10px #ff66cc;
 }
+
 
 
 
