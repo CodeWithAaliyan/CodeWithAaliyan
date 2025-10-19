@@ -58,7 +58,7 @@ class GlowParticle {
 
   draw() {
     const glow = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 4);
-    glow.addColorStop(0, `${this.color}`);
+    glow.addColorStop(0, this.color);
     glow.addColorStop(1, "transparent");
 
     ctx.beginPath();
@@ -72,7 +72,7 @@ function init() {
   starsArray = [];
   glowParticlesArray = [];
 
-  // 🌟 Normal tiny stars
+  // 🌟 Tiny stars
   for (let i = 0; i < 250; i++) {
     const size = Math.random() * 1.2 + 0.3;
     const x = Math.random() * canvas.width;
@@ -81,27 +81,26 @@ function init() {
     starsArray.push(new Star(x, y, size, speedY));
   }
 
-  // 💫 Glowing colored particles
+  // 💫 Glowing particles (subtle)
   const colors = [
-    "rgba(0,255,255,0.9)",   // cyan
-    "rgba(255,0,255,0.9)",   // magenta
-    "rgba(255,255,0,0.9)",   // yellow
-    "rgba(255,105,180,0.9)", // pink
-    "rgba(173,216,230,0.9)", // light blue
+    "rgba(0,255,255,0.8)",   // cyan
+    "rgba(255,0,255,0.8)",   // magenta
+    "rgba(255,255,0,0.8)",   // yellow
+    "rgba(255,105,180,0.8)", // pink
+    "rgba(173,216,230,0.8)", // light blue
   ];
-  for (let i = 0; i < 60; i++) {
-    const size = Math.random() * 3 + 2; // slightly bigger
+  for (let i = 0; i < 25; i++) {
+    const size = Math.random() * 2 + 2;
     const x = Math.random() * canvas.width;
     const y = Math.random() * canvas.height;
-    const speedX = (Math.random() - 0.5) * 0.4;
-    const speedY = (Math.random() - 0.5) * 0.4;
+    const speedX = (Math.random() - 0.5) * 0.3;
+    const speedY = (Math.random() - 0.5) * 0.3;
     const color = colors[Math.floor(Math.random() * colors.length)];
     glowParticlesArray.push(new GlowParticle(x, y, size, speedX, speedY, color));
   }
 }
 
 function animate() {
-  // Background with a soft blue-black gradient
   const gradient = ctx.createRadialGradient(
     canvas.width / 2,
     canvas.height / 2,
@@ -115,14 +114,15 @@ function animate() {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Draw both layers
-  starsArray.forEach((star) => {
+  // Draw stars
+  starsArray.forEach(star => {
     star.update();
     star.draw();
   });
 
-  ctx.globalCompositeOperation = "lighter"; // color blending for glow
-  glowParticlesArray.forEach((particle) => {
+  // Draw glowing particles
+  ctx.globalCompositeOperation = "lighter";
+  glowParticlesArray.forEach(particle => {
     particle.update();
     particle.draw();
   });
@@ -131,12 +131,13 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
+// Initialize
 init();
 animate();
 
+// Resize
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   init();
 });
-
