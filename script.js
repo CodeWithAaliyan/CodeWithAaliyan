@@ -1,5 +1,5 @@
 /* TYPING EFFECT */
-const words=["Building the AI Future","Web Developer","Class 9th Student"];
+const words=["Building the AI Future"];
 let i=0,j=0,del=false;
 function type(){
   const word=words[i];
@@ -38,4 +38,5 @@ themeToggleCircle.onclick = ()=>{
   }
 
 };
+
 
