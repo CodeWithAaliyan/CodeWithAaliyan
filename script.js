@@ -3,7 +3,6 @@ const words=["Building the AI Future","Web Developer","Class 9th Student"];
 let i=0,j=0,del=false;
 function type(){
   const word=words[i];
-  document.getElementById("typing").innerText=word.slice(0,j);
   if(!del && j++===word.length) del=true;
   else if(del && j--===0){ del=false; i=(i+1)%words.length; }
   setTimeout(type,del?60:120);
@@ -38,4 +37,5 @@ themeToggleCircle.onclick = ()=>{
     document.body.dataset.theme = "light";
     themeToggleCircle.innerText = "🌙";
   }
+
 };
