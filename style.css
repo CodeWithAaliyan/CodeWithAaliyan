@@ -318,4 +318,27 @@ footer{
     height:35px;
     font-size:1rem;
   }
+
+}
+
+nav a{
+  position: relative; /* underline ke liye zaroori */
+}
+
+                           /* underline line */
+
+nav a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;        /* text ke thoda niche */
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg,var(--accent),var(--accent2));
+  transition: width 0.3s ease;
+}
+
+/* hover par line show */
+nav a:hover::after{
+  width: 100%;
 }
